@@ -1,0 +1,74 @@
+<h1>Héroe
+    <small>Nombre del Héroe</small>
+</h1>
+<hr>
+<div class="row">
+    <div class="col text-end">
+        <button class="btn btn-outline-danger" routerLink="/heroes">
+            <i class="fa fa-arrow-left"></i>
+            Regresar
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col mt-4">
+        <form (ngSubmit)="guardar(f)"
+              #f="ngForm">
+            <div class="form-floating mb-3">
+                <input type="text"
+                       disabled="disabled"
+                       class="form-control"
+                       name="id"
+                       [(ngModel)]="heroe.id"
+                       id="floatingInput">
+
+                <label for="floatingInput">Fire base Id</label>
+                <small class="text-muted">Este campo es autogenerado</small>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text"
+                       autocomplete="false"
+                       required
+                       class="form-control"
+                       name="nombre"
+                       [(ngModel)]="heroe.nombre"
+                       id="nombreHeroe"
+                       placeholder="Nombre del héroe">
+
+                <label for="nombreHeroe">Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text"
+                       autocomplete="false"
+                       required class="form-control"
+                       name="poder"
+                       [(ngModel)]="heroe.poder"
+                       id="poderHeroe"
+                       placeholder="Poder del héroe">
+                <label for="poderHeroe">Poder</label>
+            </div>
+            <div class="mb-3">
+                <label for="poderHeroe">Estado</label>
+                <div class="d-block">
+
+                    <button *ngIf="heroe.vivo"
+                            (click)="heroe.vivo = false"
+                            type="button"
+                            class="btn btn-success btn-block">Vivo</button>
+
+                    <button *ngIf="!heroe.vivo"
+                            (click)="heroe.vivo = true"
+                            type="button"
+                            class="btn btn-danger btn-block">Muerto</button>
+                </div>
+            </div>
+            <hr>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
