@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HeroeModel } from '../models/heroe.model';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +32,23 @@ export class HeroesService {
   getHeroes() {
     return this.http.get(`${this.urlHeroe}/heroes.json`)
           .pipe(
-            map( this.crearArrglo )
+            map( this.crearArrglo ),
+            delay(500)
           );
+  }
+
+  getHeroe( id: string) {
+    return this.http.get(`${this.urlHeroe}/heroes/${id}.json`)
+    .pipe(
+      map((data:any) => {
+        const heroe: HeroeModel = data;
+        return heroe
+      })
+    )
+  }
+
+  deleteHeroe( id: string ){
+    return this.http.delete(`${this.urlHeroe}/heroes/${id}.json`)
   }
 
   private crearArrglo( heroesObj: any ) {
