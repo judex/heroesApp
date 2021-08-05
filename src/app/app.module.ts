@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GeneratorComponent } from './pages/generator/generator.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -36,7 +36,7 @@ export class HeroesService {
           );
   }
 
-  private crearArrglo( heroesObj: any ){
+  private crearArrglo( heroesObj: any ) {
     const heroes: HeroeModel[] = [];
     console.log(heroesObj);
     if( heroesObj === null ){ //por si no hay ninguna informacion en la BD para listar la tabla
